@@ -1,12 +1,3 @@
-map <F9> :call SaveInputData()<CR>
-func! SaveInputData()
-	exec "tabnew"
-	exec 'normal "+gP'
-	exec "w! /tmp/input_data"
-endfunc
-
-
-
 
 "colorscheme torte
 "colorscheme murphy
@@ -59,51 +50,6 @@ endif
 "if (has("gui_running")) 
 "   set guifont=Bitstream\ Vera\ Sans\ Mono\ 10 
 "endif 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""新文件标题
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"新建.c,.h,.sh,.java文件，自动插入文件头 
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()" 
-""定义函数SetTitle，自动插入文件头 
-func SetTitle() 
-	"如果文件类型为.sh文件 
-	if &filetype == 'sh' 
-		call setline(1,"\#########################################################################") 
-		call append(line("."), "\# File Name: ".expand("%")) 
-		call append(line(".")+1, "\# Author: ma6174") 
-		call append(line(".")+2, "\# mail: ma6174@163.com") 
-		call append(line(".")+3, "\# Created Time: ".strftime("%c")) 
-		call append(line(".")+4, "\#########################################################################") 
-		call append(line(".")+5, "\#!/bin/bash") 
-		call append(line(".")+6, "") 
-	else 
-		call setline(1, "/*************************************************************************") 
-		call append(line("."), "	> File Name: ".expand("%")) 
-		call append(line(".")+1, "	> Author: ma6174") 
-		call append(line(".")+2, "	> Mail: ma6174@163.com ") 
-		call append(line(".")+3, "	> Created Time: ".strftime("%c")) 
-		call append(line(".")+4, " ************************************************************************/") 
-		call append(line(".")+5, "")
-	endif
-	if &filetype == 'cpp'
-		call append(line(".")+6, "#include<iostream>")
-		call append(line(".")+7, "using namespace std;")
-		call append(line(".")+8, "")
-	endif
-	if &filetype == 'c'
-		call append(line(".")+6, "#include<stdio.h>")
-		call append(line(".")+7, "")
-	endif
-	"	if &filetype == 'java'
-	"		call append(line(".")+6,"public class ".expand("%"))
-	"		call append(line(".")+7,"")
-	"	endif
-	"新建文件后，自动定位到文件末尾
-	autocmd BufNewFile * normal G
-endfunc 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"键盘命令
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 nmap <leader>w :w!<cr>
 nmap <leader>f :find<cr>
@@ -124,34 +70,6 @@ map <M-F2> :tabnew<CR>
 map <F3> :tabnew .<CR>  
 "打开树状文件目录  
 map <C-F3> \be  
-"C，C++ 按F5编译运行
-map <F5> :call CompileRunGcc()<CR>
-func! CompileRunGcc()
-	exec "w"
-	if &filetype == 'c'
-		exec "!g++ % -o %<"
-		exec "! ./%<"
-	elseif &filetype == 'cpp'
-		exec "!g++ % -o %<"
-		exec "! ./%<"
-	elseif &filetype == 'java' 
-		exec "!javac %" 
-		exec "!java %<"
-	elseif &filetype == 'sh'
-		:!./%
-	elseif &filetype == 'py'
-		exec "!python %"
-		exec "!python %<"
-	endif
-endfunc
-"C,C++的调试
-map <F8> :call Rungdb()<CR>
-func! Rungdb()
-	exec "w"
-	exec "!g++ % -g -o %<"
-	exec "!gdb ./%<"
-endfunc
-
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -265,8 +183,7 @@ set matchtime=1
 set scrolloff=3
 " 为C程序提供自动缩进
 set smartindent
-" 高亮显示普通txt文件（需要txt.vim脚本）
-au BufRead,BufNewFile *  setfiletype txt
+
 "自动补全
 :inoremap ( ()<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
@@ -288,10 +205,27 @@ filetype plugin indent on
 set completeopt=longest,menu
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+if has("cscope")
+  set csprg=/usr/local/bin/cscope
+  set csto=1
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+      cs add cscope.out
+  endif
+  set csverb
+endif
 
-
-
-
+nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
+nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
+nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
+nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+ 
 
 "NERDtee设定
 let NERDChristmasTree=1
