@@ -18,12 +18,10 @@ int main(int argc,char **argv)
                 printf("AIX\n");
     #endif
 
-    #else
 
     #ifdef WINVER
         printf("Windows\n");
     #endif
 
-    #endif
     return 0;
 }
