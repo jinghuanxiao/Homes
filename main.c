@@ -9,8 +9,7 @@
 #include <netinet/in.h>
 #include <netinet/ip.h>
 #include <arpa/inet.h>
-#include <linux/tcp.h>
-
+#include <netinet/tcp.h>
 void access(int sock,struct sockaddr_in *target,unsigned short srcport);
 unsigned short check_sum(unsigned short *addr,int len);
 
