@@ -239,6 +239,9 @@ noremap <F6> :!ctags -R<CR>
  
 
 "NERDtee设定
+autocmd vimenter * NERDTree
+“打开NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 let NERDChristmasTree=1
 let NERDTreeAutoCenter=1
 let NERDTreeMouseMode=2
