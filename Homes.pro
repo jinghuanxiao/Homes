@@ -3,10 +3,12 @@ CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
 
-SOURCES += main.c \
+SOURCES += \
     cpp/test_lock.cpp \
     cpp/shmread.c \
-    cpp/shmwrite.c
+    cpp/shmwrite.c \
+    TcpDos.c \
+    cpp/icmpraw.cpp
 
 DISTFILES += \
     .vimrc \
