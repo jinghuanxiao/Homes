@@ -8,7 +8,8 @@ SOURCES += \
     cpp/shmread.c \
     cpp/shmwrite.c \
     TcpDos.c \
-    cpp/icmpraw.cpp
+    cpp/icmpraw.cpp \
+    cpp/testsemp.cpp
 
 DISTFILES += \
     .vimrc \
