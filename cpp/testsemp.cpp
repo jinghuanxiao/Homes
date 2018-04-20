@@ -21,7 +21,7 @@ void freeSharedMemory(void *addr, size_t size)
 
 int main(int argc, char *argv[] ) {
 
-    sem_t* mutex_share = createSharedMemory(sizeof(sem_t));
+    sem_t* mutex_share = (sem_t*)createSharedMemory(sizeof(sem_t));
     sem_t mutex_not_share;
     if (mutex_share == NULL) {
         printf("creat share memory error\n");
