@@ -34,7 +34,7 @@ void my_initproctitle(char* argv[], char** last)
 
      }
 
-     p_tmp = malloc(i_size);
+     p_tmp = (char*)malloc(i_size);
 
      if(p_tmp == NULL){
 
