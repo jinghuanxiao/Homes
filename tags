@@ -5,6 +5,21 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
 AF_INET	pythons/client.py	/^from  socket import socket, AF_INET,SOCK_STREAM$/;"	i
+Access	TcpDos.c	/^void Access(int sock,struct sockaddr_in *target,unsigned short srcport){$/;"	f
+BUFSIZE	cpp/icmpraw.cpp	16;"	d	file:
+CRC16_CCITT	cpp/CRC/crc.cpp	/^unsigned short CRC16_CCITT(unsigned char *puchMsg, unsigned int usDataLen)$/;"	f
+CRC16_CCITT_FALSE	cpp/CRC/crc.cpp	/^unsigned short CRC16_CCITT_FALSE(unsigned char *puchMsg, unsigned int usDataLen)$/;"	f
+CRC16_IBM	cpp/CRC/crc.cpp	/^unsigned short CRC16_IBM(unsigned char *puchMsg, unsigned int usDataLen)$/;"	f
+CRC16_MAXIM	cpp/CRC/crc.cpp	/^unsigned short CRC16_MAXIM(unsigned char *puchMsg, unsigned int usDataLen)$/;"	f
+CRC16_MODBUS	cpp/CRC/crc.cpp	/^unsigned short CRC16_MODBUS(unsigned char *puchMsg, unsigned int usDataLen)$/;"	f
+CRC16_USB	cpp/CRC/crc.cpp	/^unsigned short CRC16_USB(unsigned char *puchMsg, unsigned int usDataLen)$/;"	f
+CRC16_X25	cpp/CRC/crc.cpp	/^unsigned short CRC16_X25(unsigned char *puchMsg, unsigned int usDataLen)$/;"	f
+CRC16_XMODEM	cpp/CRC/crc.cpp	/^unsigned short CRC16_XMODEM(unsigned char *puchMsg, unsigned int usDataLen)$/;"	f
+CRC32	cpp/CRC/crc.cpp	/^unsigned int CRC32(unsigned char *puchMsg, unsigned int usDataLen)$/;"	f
+CRC_H	cpp/CRC/crc.h	2;"	d
+InvertUint16	cpp/CRC/crc.cpp	/^void InvertUint16(unsigned short *dBuf,unsigned short *srcBuf)$/;"	f
+InvertUint32	cpp/CRC/crc.cpp	/^void InvertUint32(unsigned int *dBuf,unsigned int *srcBuf)$/;"	f
+InvertUint8	cpp/CRC/crc.cpp	/^void InvertUint8(unsigned char *dBuf,unsigned char *srcBuf)$/;"	f
 LazyConnect	pythons/client.py	/^class LazyConnect(object):$/;"	c
 SOCK_STREAM	pythons/client.py	/^from  socket import socket, AF_INET,SOCK_STREAM$/;"	i
 TEXT_SZ	cpp/shmdata.h	4;"	d
@@ -12,14 +27,56 @@ _SHMDATA_H_HEADER	cpp/shmdata.h	2;"	d
 __enter__	pythons/client.py	/^	def __enter__(self):$/;"	m	class:LazyConnect	file:
 __exit__	pythons/client.py	/^	def __exit__(self):$/;"	m	class:LazyConnect	file:
 __init__	pythons/client.py	/^	def __init__(self,address,family= AF_INET,type= SOCK_STREAM):$/;"	m	class:LazyConnect
-client	pythons/client.py	/^	client =LazyConnect(("192.168.246.130",10000))$/;"	v
-func	cpp/test_lock.cpp	/^void *func(void* arg)$/;"	f
+act_alarm	cpp/icmpraw.cpp	/^struct sigaction act_alarm;$/;"	v	typeref:struct:sigaction
+act_int	cpp/icmpraw.cpp	/^struct sigaction act_int;$/;"	v	typeref:struct:sigaction
+alarm_handler	cpp/icmpraw.cpp	/^void alarm_handler(int signo)$/;"	f
+alex	cpp/test_lock.cpp	/^int alex=0;$/;"	v
+bail	cpp/icmpraw.cpp	/^void bail(const char * on_what)$/;"	f
+check_sum	TcpDos.c	/^unsigned short check_sum(unsigned short *addr,int len)$/;"	f
+checksum	cpp/icmpraw.cpp	/^u16 checksum(u8 *buf,int len)$/;"	f
+client	pythons/client.py	/^	client =LazyConnect(("192.168.246.130",1900))$/;"	v
+createSharedMemory	cpp/testsemp.cpp	/^void *createSharedMemory(size_t size) {$/;"	f
+datalen	cpp/icmpraw.cpp	/^int  datalen=56;\/\/ICMP消息携带的数据长度$/;"	v
+dest	cpp/icmpraw.cpp	/^struct sockaddr_in dest;\/\/被ping主机的ip$/;"	v	typeref:struct:sockaddr_in
+freeSharedMemory	cpp/testsemp.cpp	/^void freeSharedMemory(void *addr, size_t size)$/;"	f
+from	cpp/icmpraw.cpp	/^struct sockaddr_in from;\/\/发送ping应答消息的主机ip$/;"	v	typeref:struct:sockaddr_in
+get_statistics	cpp/icmpraw.cpp	/^void get_statistics(int nsent,int nrecv)$/;"	f
+handle_pkt	cpp/icmpraw.cpp	/^int handle_pkt(int len)$/;"	f
+hello	cpp/icmpraw.cpp	/^char hello[]="hello this is  a ping test.";$/;"	v
+hostname	cpp/icmpraw.cpp	/^char *hostname; \/\/被ping的主机$/;"	v
+int_handler	cpp/icmpraw.cpp	/^void int_handler(int sig)$/;"	f
+main	TcpDos.c	/^int main(int argc,char** argv)$/;"	f
+main	cpp/changetitle.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	cpp/cpuaffinity.c	/^int main(int argc,char *argv[])$/;"	f
+main	cpp/icmpraw.cpp	/^int main(int argc,char **argv)  \/\/argc表示隐形程序命令行中参数的数目，argv是一个指向字符串数组指针，其中每一个字符对应一个参数$/;"	f
+main	cpp/judgeSys.c	/^int main(int argc,char **argv)$/;"	f
+main	cpp/printUnsigedChar.c	/^int main(int argc,char *argv[])$/;"	f
 main	cpp/shmread.c	/^    int main()  $/;"	f
 main	cpp/shmwrite.c	/^    int main()  $/;"	f
-main	cpp/test_lock.cpp	/^int main(int argc,char *argv[])$/;"	f
-semLock	cpp/test_lock.cpp	/^sem_t semLock;$/;"	v
+main	cpp/test_lock.cpp	/^int main()$/;"	f
+main	cpp/testsemp.cpp	/^int main(int argc, char *argv[] ) {$/;"	f
+my_initproctitle	cpp/changetitle.cpp	/^void my_initproctitle(char* argv[], char** last)$/;"	f
+my_setproctitle	cpp/changetitle.cpp	/^ void my_setproctitle(char* argv[], char** last, char* title)$/;"	f
+nrecv	cpp/icmpraw.cpp	/^int nrecv;$/;"	v
+nsent	cpp/icmpraw.cpp	/^int nsent;\/\/发送的ICMP消息序号$/;"	v
+pid	cpp/icmpraw.cpp	/^pid_t pid;\/\/ping程序的进程pid$/;"	v
+recv_reply	cpp/icmpraw.cpp	/^void recv_reply()$/;"	f
+recvbuf	cpp/icmpraw.cpp	/^char recvbuf[BUFSIZE];$/;"	v
+recvtime	cpp/icmpraw.cpp	/^struct timeval recvtime; \/\/收到ICMP应答的时间戳$/;"	v	typeref:struct:timeval
+sem12	cpp/test_lock.cpp	/^sem_t sem12;$/;"	v
+send_ping	cpp/icmpraw.cpp	/^void send_ping()$/;"	f
+sendbuf	cpp/icmpraw.cpp	/^char sendbuf[BUFSIZE];$/;"	v
+set_sighandler	cpp/icmpraw.cpp	/^void set_sighandler()$/;"	f
 shared_use_st	cpp/shmdata.h	/^    struct shared_use_st  $/;"	s
 socket	pythons/client.py	/^from  socket import socket, AF_INET,SOCK_STREAM$/;"	i
+sockfd	cpp/icmpraw.cpp	/^int sockfd; \/\/发送和接收原始套接字$/;"	v
 sys	pythons/client.py	/^import sys$/;"	i
 text	cpp/shmdata.h	/^        char text[TEXT_SZ];\/\/记录写入和读取的文本  $/;"	m	struct:shared_use_st
+thread1	cpp/test_lock.cpp	/^void* thread1(void* arg)$/;"	f
+thread2	cpp/test_lock.cpp	/^void* thread2(void* arg)$/;"	f
+thread3	cpp/test_lock.cpp	/^void* thread3(void* arg)$/;"	f
+u16	cpp/icmpraw.cpp	/^typedef unsigned short u16;$/;"	t	file:
+u32	cpp/icmpraw.cpp	/^typedef unsigned int u32;$/;"	t	file:
+u8	cpp/icmpraw.cpp	/^typedef unsigned char u8;$/;"	t	file:
+val_alarm	cpp/icmpraw.cpp	/^struct itimerval val_alarm;$/;"	v	typeref:struct:itimerval
 written	cpp/shmdata.h	/^        int written;\/\/作为一个标志，非0：表示可读，0表示可写  $/;"	m	struct:shared_use_st
