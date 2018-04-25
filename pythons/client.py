@@ -21,7 +21,7 @@ class LazyConnect(object):
  
 if __name__ == "__main__":
 	
-	client =LazyConnect(("192.168.246.130",10000))
+	client =LazyConnect(("192.168.246.130",1900))
 '''	with client as Client:
 		
 		pass
