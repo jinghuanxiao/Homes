@@ -66,6 +66,7 @@ void my_initproctitle(char* argv[], char** last)
      char* p_tmp = NULL;
      p_tmp = argv[0];
      /* memset(p_tmp, 0, *last - p_tmp); */
+	 printf("*last-p_tmp=%d\n",*last-p_tmp);
      strncpy(p_tmp, title, *last - p_tmp);
      return ;
  }
