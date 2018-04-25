@@ -9,7 +9,8 @@ SOURCES += \
     cpp/shmwrite.c \
     TcpDos.c \
     cpp/icmpraw.cpp \
-    cpp/testsemp.cpp
+    cpp/testsemp.cpp \
+    cpp/changetitle.cpp
 
 DISTFILES += \
     .vimrc \
