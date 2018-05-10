@@ -445,7 +445,8 @@ DISTFILES += \
     cpp/Priv/Priv/todo.txt \
     cpp/Priv/Priv/lib/openssl/linux/CVS/Entries.Log \
     cpp/Priv/Priv/lib/openssl/linux/include/CVS/Entries.Log \
-    cpp/Priv/Priv/lib/pthreads/CVS/Entries.Log
+    cpp/Priv/Priv/lib/pthreads/CVS/Entries.Log \
+    pythons/Rename.py
 
 HEADERS += \
     cpp/shmdata.h \
