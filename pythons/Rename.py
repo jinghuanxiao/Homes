@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-path = sys.getcwd()
+path = os.getcwd()
 print (path)
 sys.path.append(path)
 
