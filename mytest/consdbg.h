@@ -1,0 +1,21 @@
+
+#ifndef __CONSDBG_H__
+#define __CONSDBG_H__
+
+class CConsDbg
+{
+public:
+	void Init(int iDebugLevel);
+	void DeInit();
+
+#ifdef DBGCONSOLE
+	void Log(int iDebugLevel, const char *logfmt, ...);
+	void LogErr(int iDebugLevel, const char *logfmt, ...);
+#endif // DBGCONSOLE
+protected:
+
+	bool m_bEnabled;
+	int m_iDebugLevel;
+};
+
+#endif // __CONSDBG_H__
