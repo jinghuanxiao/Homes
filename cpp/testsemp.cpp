@@ -22,44 +22,32 @@ void freeSharedMemory(void *addr, size_t size)
 int main(int argc, char *argv[] ) {
 
     sem_t* mutex_share = (sem_t*)createSharedMemory(sizeof(sem_t));
-    sem_t mutex_not_share;
     if (mutex_share == NULL) {
         printf("creat share memory error\n");
         return 0;
     }
-    if( sem_init(mutex_share,1,1) < 0  || sem_init(&mutex_not_share,1,1) < 0) {
+    if( sem_init(mutex_share,1,1) < 0) {
       printf("semaphore initilization\n");
       return 0;
     }
     if (fork() == 0) {
-        sem_wait(&mutex_not_share);
-        for(int j = 0;j<5;j++) {
-            printf("mutex_not_share child j = %d\n", j);
-            usleep(50000);
-        }
-        sem_post(&mutex_not_share);
-
-        sem_wait(mutex_share);
         for (int i = 0;i<5;i++) {
+			sem_wait(mutex_share);
             printf("mutex_share child i = %d\n", i);
+			sem_post(mutex_share);
             usleep(50000);
         }
-        sem_post(mutex_share);
+        
 
     }
     else {
-        sem_wait(&mutex_not_share);
-        for(int j = 0;j<5;j++) {
-            printf("mutex_not_share parent j = %d\n", j);
-            usleep(50000);
-        }
-        sem_post(&mutex_not_share);
-        sem_wait(mutex_share);
+        
         for (int i = 0;i<5;i++) {
+			sem_wait(mutex_share);
             printf("mutex_share parent i = %d\n", i);
+			sem_post(mutex_share);
             usleep(50000);
         }
-        sem_post(mutex_share);
     }
     freeSharedMemory(mutex_share,sizeof(sem_t));
     return 0;
