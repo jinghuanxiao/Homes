@@ -22,6 +22,7 @@ void freeSharedMemory(void *addr, size_t size)
 int main(int argc, char *argv[] ) {
 
     sem_t* mutex_share = (sem_t*)createSharedMemory(sizeof(sem_t));
+	
     if (mutex_share == NULL) {
         printf("creat share memory error\n");
         return 0;
@@ -31,21 +32,22 @@ int main(int argc, char *argv[] ) {
       return 0;
     }
     if (fork() == 0) {
+		sem_t * mutex1 = mutex_share;
         for (int i = 0;i<5;i++) {
-			sem_wait(mutex_share);
+			sem_wait(mutex1);
             printf("mutex_share child i = %d\n", i);
-			sem_post(mutex_share);
+			sem_post(mutex1);
             usleep(50000);
         }
         
 
     }
     else {
-        
+        sem_t * mutex2 = mutex_share;
         for (int i = 0;i<5;i++) {
-			sem_wait(mutex_share);
+			sem_wait(mutex2);
             printf("mutex_share parent i = %d\n", i);
-			sem_post(mutex_share);
+			sem_post(mutex2);
             usleep(50000);
         }
     }
