@@ -56,7 +56,7 @@ int main(int argc, char *argv[] ) {
 		C1 c1;
 		c1.mutex1 = mutex_share;
         for (int i = 0;i<5;i++) {
-			c1.print();
+			c1.print(i);
             usleep(50000);
         }    
 
@@ -65,7 +65,7 @@ int main(int argc, char *argv[] ) {
         C2 c2;
 		c2.mutex2 = mutex_share;
         for (int i = 0;i<5;i++) {
-			c2.print();
+			c2.print(i);
             usleep(50000);
         }
     }
