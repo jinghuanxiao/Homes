@@ -3,6 +3,27 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/mman.h>
+class C1
+{
+public:
+void print(int i ){
+	sem_wait(mutex1);
+    printf("mutex_share child i = %d\n", i);        
+	sem_post(mutex1);
+	}
+sem_t * mutex1;	
+};
+class C2
+{
+public:
+void print(int i ){
+	sem_wait(mutex2);
+            printf("mutex_share parent i = %d\n", i);
+			sem_post(mutex2);
+	}
+sem_t * mutex2;	
+};
+
 
 void *createSharedMemory(size_t size) {
     void *addr = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_ANON | MAP_SHARED, -1, 0);
@@ -32,22 +53,19 @@ int main(int argc, char *argv[] ) {
       return 0;
     }
     if (fork() == 0) {
-		sem_t * mutex1 = mutex_share;
+		C1 c1;
+		c1.mutex1 = mutex_share;
         for (int i = 0;i<5;i++) {
-			sem_wait(mutex1);
-            printf("mutex_share child i = %d\n", i);
-			sem_post(mutex1);
+			c1.print();
             usleep(50000);
-        }
-        
+        }    
 
     }
     else {
-        sem_t * mutex2 = mutex_share;
+        C2 c2;
+		c2.mutex2 = mutex_share;
         for (int i = 0;i<5;i++) {
-			sem_wait(mutex2);
-            printf("mutex_share parent i = %d\n", i);
-			sem_post(mutex2);
+			c2.print();
             usleep(50000);
         }
     }
