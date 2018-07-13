@@ -1,19 +1,11 @@
-
-TARGETS=libadns.a
-
-LIBOBJS=types.o event.o query.o reply.o general.o setup.o transmit.o \
-		parse.o poll.o check.o
-
-all: libadns.a
-
-libadns.a: $(LIBOBJS)
-		rm -f $@
-		$(AR) cq $@ $(LIBOBJS)
-
-clean:
-	rm -f $(LIBOBJS) libadns.a *~ config.status
-
-distclean: clean
-	rm -f config.h .depend
-
-$(LIBOBJS):	adns.h internal.h config.h
+#子目录的Makefile直接读取其子目录就行
+SUBDIRS=$(shell ls -l | grep ^d | awk '{print $$9}')
+CUR_SOURCE=${wildcard *.c}
+CUR_OBJS=${patsubst %.c, %.o, $(CUR_SOURCE)}
+all:$(SUBDIRS) $(CUR_OBJS)
+$(SUBDIRS):ECHO
+	make -C $@
+$(CUR_OBJS):%.o:%.c
+	arm-none-linux-gnueabi-gcc -c $^ -o $(ROOT_DIR)/$(OBJS_DIR)/$@    
+ECHO:
+	@echo $(SUBDIRS)

@@ -1,5 +1,5 @@
 #…Ë÷√±‡“Î∆˜
-CC=clang
+CC=arm-none-linux-gnueabi-g++
 SUBDIRS=$(shell ls -l | grep ^d | awk '{if($$9 != "debug") print $$9}')
 ROOT_DIR=$(shell pwd)
 BIN=myapp
@@ -16,7 +16,7 @@ DEBUG:ECHO
 ECHO:
 	@echo $(SUBDIRS)
 $(CUR_OBJS):%.o:%.cpp
-	$(CC) -c $^ -o $(ROOT_DIR)/$(OBJS_DIR)/$@ -I Common -I Log
+	$(CC) -c $^ -o $(ROOT_DIR)/$(OBJS_DIR)/$@ -I Common -I Log -I Adns
 CLEAN:
 	@rm $(OBJS_DIR)/*.o
 	@rm -rf $(BIN_DIR)/*
