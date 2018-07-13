@@ -6,12 +6,13 @@
 #include <stdio.h>
 #include  <unistd.h>
 #include  <string.h>
+#include "sqlite3.h"
 
 int test_dns(char *host)  
 {
     adns_state ads;
     adns_initflags flags;  
-    flags = adns_if_nosigpipe | adns_if_noerrprint;
+    flags = adns_initflags(adns_if_nosigpipe | adns_if_noerrprint);
     adns_init(&ads, flags, NULL);
         
     adns_query quer = NULL;
@@ -59,6 +60,17 @@ int test_dns(char *host)
 
 int main(int argc, char *argv[]) {
     char host[128];
+	
+	sqlite3 *db;
+    int result = 0;
+    char *rerrmsg = NULL;
+    char *sql = NULL;
+    char *data = "callback";
+    result = sqlite3_open("sample.db",&db);
+     if(result > 0)
+     {         printf("open database err:%s\n",sqlite3_errmsg(db));
+         return -1;
+     }
 
     while(1) {
         scanf("%s", host);
