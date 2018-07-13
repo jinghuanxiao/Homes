@@ -1,5 +1,5 @@
 #…Ë÷√±‡“Î∆˜
-CC=arm-none-linux-gnueabi-g++
+CC=clang
 SUBDIRS=$(shell ls -l | grep ^d | awk '{if($$9 != "debug") print $$9}')
 ROOT_DIR=$(shell pwd)
 BIN=myapp
