@@ -1,0 +1,14 @@
+﻿QWidget
+{
+    background-color:#204160; color:white;
+}
+QPushButton
+{
+    background-color:#FFFFFF; color:white;
+}
+QLabel
+{
+     text-align: center;
+     font-size: 14px;
+     font-family: "Microsoft Yahei";
+}
