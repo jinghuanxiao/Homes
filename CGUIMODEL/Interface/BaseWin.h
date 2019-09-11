@@ -14,16 +14,18 @@ class CBaseWidget : public QWidget
 public:
     CBaseWidget(QWidget *parent = 0);
     ~CBaseWidget();
-private:
-    CBaseTopBar *message_title;
-    QLabel *content_label;
+
 private slots:
     void closeWin();
     void minWin();
     void maxWin();
 
+protected:
+    QWidget* m_winContent;
+    CBaseTopBar *m_topBar;
 private:
     void initFrameless();
+    virtual void initGUI();
 };
 
 #endif // BASEWIN_H

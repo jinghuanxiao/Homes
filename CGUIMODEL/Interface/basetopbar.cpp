@@ -1,9 +1,10 @@
 ﻿#include "baseTopBar.h"
-
+#include "iconhelper.h"
+#include <QSpacerItem>
 CBaseTopBar::CBaseTopBar(QWidget *parent)
     : QWidget(parent)
 {
-    setFixedHeight(30);
+    setFixedHeight(25);
     title_label = new QLabel();
     m_clostBtn = new CPushButton();
     m_minBtn = new CPushButton();
@@ -16,10 +17,13 @@ CBaseTopBar::CBaseTopBar(QWidget *parent)
     m_maxBtn->setToolTip(tr("max"));
     layout->addWidget(title_label);
     layout->addStretch();
+
     layout->addWidget(m_minBtn);
     layout->addWidget(m_maxBtn);
     layout->addWidget(m_clostBtn);
+    layout->setSpacing(0);
     layout->setMargin(1);
+
     setLayout(layout);
     connect(m_clostBtn, SIGNAL(clicked()), this, SIGNAL(closeWin()));
     connect(m_minBtn, SIGNAL(clicked()), this, SIGNAL(minWin()));

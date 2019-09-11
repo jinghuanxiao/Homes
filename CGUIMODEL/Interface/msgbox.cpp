@@ -1,4 +1,4 @@
-#include "msgbox.h"
+ï»¿#include "msgbox.h"
 
 CMsgBox::CMsgBox(QWidget *parent)
  : QDialog(parent)
@@ -6,14 +6,14 @@ CMsgBox::CMsgBox(QWidget *parent)
   this->resize(240, 160);
   this->setAttribute(Qt::WA_TranslucentBackground);
 
-  //»ñÈ¡Ö÷½çÃæµÄ¿í¶È
+  //èŽ·å–ä¸»ç•Œé¢çš„å®½åº¦
   int width = this->width();
   int height = this->height();
 
-  //³õÊ¼»¯ÎªÎ´°´ÏÂÊó±ê×ó¼ü
+  //åˆå§‹åŒ–ä¸ºæœªæŒ‰ä¸‹é¼ æ ‡å·¦é”®
   mouse_press = false;
 
-  //ÉèÖÃ±êÌâÀ¸Òþ²Ø
+  //è®¾ç½®æ ‡é¢˜æ éšè—
   this->setWindowFlags(Qt::FramelessWindowHint| Qt::Dialog|Qt::WindowStaysOnTopHint);
 
   close_button = new QPushButton(this);
@@ -22,7 +22,7 @@ CMsgBox::CMsgBox(QWidget *parent)
   close_button->setIconSize(QSize(27,24));
   close_button->setStyleSheet("background:transparent;");
 
-  //ÉèÖÃ±êÌâ
+  //è®¾ç½®æ ‡é¢˜
   title_label = new QLabel(this);
   title_label->setObjectName(QString::fromUtf8("labelOne"));
   QFont font = title_label->font();
@@ -31,12 +31,12 @@ CMsgBox::CMsgBox(QWidget *parent)
   title_label->setGeometry(0, 0, width-50, 30);
   title_label ->setStyleSheet("QLabel{font-size:14px;color: #d5ffff;}");
 
-  //ÉèÖÃÌáÊ¾Í¼Æ¬
+  //è®¾ç½®æç¤ºå›¾ç‰‡
   msg_label = new QLabel(this);
   msg_label->setGeometry(20, 50, 36, 36);
   msg_label->setScaledContents(true);
 
-  //ÉèÖÃÌáÊ¾ÐÅÏ¢£¬ÈÃQLabelÄÜ¹»×Ô¶¯ÅÐ¶Ï²¢»»ÐÐÏÔÊ¾£º
+  //è®¾ç½®æç¤ºä¿¡æ¯ï¼Œè®©QLabelèƒ½å¤Ÿè‡ªåŠ¨åˆ¤æ–­å¹¶æ¢è¡Œæ˜¾ç¤ºï¼š
   ask_label = new QLabel(this);
   ask_label->setGeometry(65, 60, width-100, 25*2);
   ask_label->setWordWrap(true);
@@ -73,23 +73,23 @@ CMsgBox::~CMsgBox()
 void CMsgBox::translateLanguage()
 {
   check_box->setText(tr("remember"));
-  ok_text =QString::fromLocal8Bit("È·¶¨");
-  cancel_text =QString::fromLocal8Bit("È¡Ïû");
+  ok_text =QString::fromLocal8Bit("ç¡®å®š");
+  cancel_text =QString::fromLocal8Bit("å–æ¶ˆ");
 }
 
 void CMsgBox::setInfo(QString title_info, QString info, QPixmap pixmap, bool is_check_hidden, bool is_ok_hidden)
 {
   title_label->setText(QString("  ") + title_info);
 
-  //ÉèÖÃÌáÊ¾ÐÅÏ¢
+  //è®¾ç½®æç¤ºä¿¡æ¯
   ask_label->setText(info);
   msg_label->setPixmap(pixmap);
 
-  //ÊÇ·ñÒþ²Ø¸´Ñ¡¿ò
+  //æ˜¯å¦éšè—å¤é€‰æ¡†
   check_box->setChecked(false);
   check_box->setHidden(is_check_hidden);
 
-  //ÊÇ·ñÒþ²ØÈ·¶¨°´Å¥
+  //æ˜¯å¦éšè—ç¡®å®šæŒ‰é’®
   ok_button->setHidden(is_ok_hidden);
   if(is_ok_hidden)
   {
@@ -106,7 +106,7 @@ void CMsgBox::setInfo(QString title_info, QString info, QPixmap pixmap, bool is_
 void CMsgBox::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
-    painter.setRenderHint(QPainter::Antialiasing);  // ·´¾â³Ý;
+    painter.setRenderHint(QPainter::Antialiasing);  // åé”¯é½¿;
     painter.setBrush(QBrush(QColor(41, 77, 110)));
     painter.setPen(Qt::transparent);
     QRect rect = this->rect();
@@ -116,13 +116,13 @@ void CMsgBox::paintEvent(QPaintEvent *event)
 
 void CMsgBox::mousePressEvent( QMouseEvent * event )
 {
-  //Ö»ÄÜÊÇÊó±ê×ó¼üÒÆ¶¯ºÍ¸Ä±ä´óÐ¡
+  //åªèƒ½æ˜¯é¼ æ ‡å·¦é”®ç§»åŠ¨å’Œæ”¹å˜å¤§å°
   if(event->button() == Qt::LeftButton)
   {
     mouse_press = true;
   }
 
-  //´°¿ÚÒÆ¶¯¾àÀë
+  //çª—å£ç§»åŠ¨è·ç¦»
   move_point = event->globalPos() - pos();
 }
 
@@ -133,7 +133,7 @@ void CMsgBox::mouseReleaseEvent( QMouseEvent *)
 
 void CMsgBox::mouseMoveEvent(QMouseEvent *event)
 {
-  //ÒÆ¶¯´°¿Ú
+  //ç§»åŠ¨çª—å£
   if(mouse_press)
   {
     QPoint move_pos = event->globalPos();

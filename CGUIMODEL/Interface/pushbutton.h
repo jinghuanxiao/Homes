@@ -9,7 +9,7 @@ class CPushButton : public QPushButton
     Q_OBJECT
 public:
     CPushButton(QWidget *parent = 0)
-        : QPushButton(parent) { this->setFixedSize(QSize(28, 24));}
+        : QPushButton(parent) { this->setFixedSize(QSize(27, 24));}
     ~CPushButton() {}
 
 };

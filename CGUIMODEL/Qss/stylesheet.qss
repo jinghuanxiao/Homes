@@ -1,0 +1,18 @@
+﻿QWidget
+{
+    background-color:#204160; color:white;
+}
+QPushButton
+{
+   background: transparent;
+   padding: 0px 0px 0px 0px;
+   border-radius: 1px;
+   border-width: 0px;
+   image: url(:/Images/w_close.png);
+}
+QLabel
+{
+     text-align: center;
+     font-size: 14px;
+     font-family: "Microsoft Yahei";
+}

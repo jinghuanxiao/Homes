@@ -17,36 +17,27 @@ CBaseWidget::CBaseWidget(QWidget *parent)
 {
     setWindowFlags(Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);
     initFrameless();
-    message_title = new CBaseTopBar();
-    message_title->setTitleText("world");
-    content_label = new QLabel();
-    content_label->setWordWrap(true);
-    content_label->setObjectName("_contentlbl");
-    content_label->setFixedWidth(this->width() - 20);
-    content_label->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
+    m_topBar = new CBaseTopBar();
+    m_topBar->setObjectName("WinTopBar");
+    m_topBar->setTitleText("world");
 
-    QWidget *wid = new QWidget();
-    wid->setObjectName("_popwid");
-    wid->setStyleSheet("#_popwid{background-color:#204160; color:white;}");
+    m_winContent = new QWidget();
+    m_winContent->setObjectName("winContent");
+    m_winContent->setStyleSheet("#_popwid{background-color:#204160; color:white;}");
 
-    QVBoxLayout *v_layout = new QVBoxLayout();
-    v_layout->setSpacing(0);
-    v_layout->addWidget(message_title);
-    v_layout->addWidget(wid);
+    QVBoxLayout *vLayout = new QVBoxLayout();
+    vLayout->setSpacing(0);
+    vLayout->addWidget(m_topBar);
+    vLayout->addWidget(m_winContent);
 
 
-    QVBoxLayout *v2 = new QVBoxLayout();
-    wid->setLayout(v2);
-    v2->addWidget(content_label);
-    content_label->setText("hello");
-
-    QVBoxLayout *main_layout = new QVBoxLayout();
-    main_layout->setMargin(0);
-    main_layout->addLayout(v_layout);
-    setLayout(main_layout);
-    connect(message_title, &CBaseTopBar::closeWin, this,&CBaseWidget::closeWin);
-    connect(message_title, &CBaseTopBar::maxWin, this,&CBaseWidget::maxWin);
-    connect(message_title, &CBaseTopBar::minWin, this,&CBaseWidget::minWin);
+    QVBoxLayout *mainLayout = new QVBoxLayout();
+    mainLayout->setMargin(0);
+    mainLayout->addLayout(vLayout);
+    setLayout(mainLayout);
+    connect(m_topBar, &CBaseTopBar::closeWin, this,&CBaseWidget::closeWin);
+    connect(m_topBar, &CBaseTopBar::maxWin, this,&CBaseWidget::maxWin);
+    connect(m_topBar, &CBaseTopBar::minWin, this,&CBaseWidget::minWin);
 
 }
 
@@ -80,5 +71,9 @@ void CBaseWidget::initFrameless()
     pHelper->setTitleHeight(this->height()*0.1);  //设置窗体的标题栏高度
     pHelper->setWidgetMovable(true);  //设置窗体可移动
     pHelper->setWidgetResizable(true);  //设置窗体可缩放
+}
+void CBaseWidget::initGUI()
+{
+
 }
 
