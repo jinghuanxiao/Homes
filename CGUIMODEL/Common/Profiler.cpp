@@ -48,11 +48,13 @@ CProfiler::~CProfiler()
 {
 #ifdef __cplusplus >= 201103L
     std::chrono::microseconds cost= std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now()-m_tmPoint);
+    std::cout<<"File:("<<m_pFile<<") Func:("<<m_pFun<<") Line:("<<m_iLine<<") INFO:"<< cost.count() <<"us"<<std::endl;
 #else
     struct timeval tv2;
     gettimeofday(&tv2, NULL);
     long cost = (tv.tv_sec - tv.tv_sec) * 1000000 + (tv.tv_usec - tv.tv_usec);
+    std::cout<<"File:("<<m_pFile<<") Func:("<<m_pFun<<") Line:("<<m_iLine<<") INFO:"<< cost <<"us"<<std::endl;
 #endif
-    std::cout<<"File:("<<m_pFile<<") Func:("<<m_pFun<<") Line:("<<m_iLine<<") INFO:"<<std::endl;
+
 }
 

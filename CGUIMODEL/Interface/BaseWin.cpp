@@ -7,6 +7,7 @@
 #pragma once
 #endif // _MSC_VER > 1000
 #ifdef Q_OS_WIN32
+#include <WinSock2.h>
 #include <windows.h>
 #include <tlhelp32.h>
 #include <psapi.h>

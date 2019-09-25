@@ -16,6 +16,8 @@ SOURCES += main.cpp
 include(./Interface/Interface.pri)
 include(./Common/Common.pri)
 include(./Network/Network.pri)
+include(./Log/Log.pri)
+include(./LibCurl/LibCurl.pri)
 
 RESOURCES += \
     resources.qrc
