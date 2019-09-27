@@ -162,7 +162,8 @@ HEADERS += \
     $$PWD/urldata.h \
     $$PWD/warnless.h \
     $$PWD/wildcard.h \
-    $$PWD/x509asn1.h
+    $$PWD/x509asn1.h \
+    $$PWD/curl_config.h
 
 SOURCES += \
     $$PWD/vauth/cleartext.c \

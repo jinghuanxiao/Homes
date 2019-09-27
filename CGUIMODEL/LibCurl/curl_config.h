@@ -1,4 +1,4 @@
-/* lib/curl_config.h.in.  Generated from configure.ac by autoheader.  */
+﻿/* lib/curl_config.h.in.  Generated from configure.ac by autoheader.  */
 
 /* to enable curl debug memory tracking */
 #undef CURLDEBUG
@@ -1008,6 +1008,7 @@
 
 /* to enable Windows native SSL/TLS support */
 #undef USE_SCHANNEL
+
 
 /* enable Secure Transport */
 #undef USE_SECTRANSP

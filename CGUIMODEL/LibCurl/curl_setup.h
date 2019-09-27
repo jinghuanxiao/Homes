@@ -59,44 +59,12 @@
 #  include "config-win32ce.h"
 #else
 #  ifdef WIN32
+#    include "curl_config.h"
 #    include "config-win32.h"
 #    include<WinSock2.h>
 #    include<Windows.h>
 #  endif
 #endif
-
-#if defined(macintosh) && defined(__MRC__)
-#  include "config-mac.h"
-#endif
-
-#ifdef __riscos__
-#  include "config-riscos.h"
-#endif
-
-#ifdef __AMIGA__
-#  include "config-amigaos.h"
-#endif
-
-#ifdef __SYMBIAN32__
-#  include "config-symbian.h"
-#endif
-
-#ifdef __OS400__
-#  include "config-os400.h"
-#endif
-
-#ifdef TPF
-#  include "config-tpf.h"
-#endif
-
-#ifdef __VXWORKS__
-#  include "config-vxworks.h"
-#endif
-
-#ifdef __PLAN9__
-#  include "config-plan9.h"
-#endif
-
 
 /* ================================================================ */
 /* Definition of preprocessor macros/symbols which modify compiler  */

@@ -11,7 +11,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = CGUIMODEL
 TEMPLATE = app
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    HttpClient.cpp
 
 include(./Interface/Interface.pri)
 include(./Common/Common.pri)
@@ -21,3 +22,6 @@ include(./LibCurl/LibCurl.pri)
 
 RESOURCES += \
     resources.qrc
+
+HEADERS += \
+    HttpClient.h
