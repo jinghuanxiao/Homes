@@ -1,6 +1,7 @@
 ﻿#include "baseWin.h"
 #include <QApplication>
 #include <QFile>
+#include <QDebug>
 #include <QLabel>
 #include <string>
 #include <iostream>
@@ -79,6 +80,9 @@ public:
         QLabel *text = new QLabel("hello");
         vLayout->addWidget(text);
         m_winContent->setLayout(vLayout);
+        QString path = "C:/Users/Administrator/Documents/JinDun/Recording/2019_10_15/0d9fdf17-e5f2-46c3-82f4-8f6c8cf06c26_05338228119.wav";
+        QString getUUid = path.section("/",7,7).split(".")[0].split("_")[0];
+        qDebug()<<"getUUid:"<<getUUid;
     }
 
 private:
@@ -93,7 +97,7 @@ int main(int argc, char *argv[])
     FLAGS_alsologtostderr = true;
     FLAGS_logbufsecs = 0;
 
-    HttpClient::getInstance()->HttpGet("https://curl.haxx.se/download/curl-7.66.0.zip","curl-7.66.0.zip", NULL, NULL);
+   // HttpClient::getInstance()->HttpGet("https://curl.haxx.se/download/curl-7.66.0.zip","curl-7.66.0.zip", NULL, NULL);
     QFile qss(":/Qss/stylesheet.qss");
     qss.open(QFile::ReadOnly);
     qApp->setStyleSheet(qss.readAll());

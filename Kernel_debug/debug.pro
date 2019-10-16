@@ -14,7 +14,8 @@ SOURCES += \
     server.c \
     client.c \
     socket.c \
-    sendmsg.c
+    sendmsg.c \
+    work_queue.c
 
 DISTFILES += \
     Makefile
